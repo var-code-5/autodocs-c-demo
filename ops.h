@@ -4,6 +4,7 @@
  */
 #ifndef OPS_H
 #define OPS_H
+#define VAR change
 
 #include "calc.h"
 
