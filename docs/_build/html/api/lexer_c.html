@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>lexer.c &#8212; AutoDocs  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="lexer.h" href="lexer_h.html" />
+    <link rel="prev" title="calc.h" href="calc_h.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="lexer-c">
+<h1>lexer.c<a class="headerlink" href="#lexer-c" title="Link to this heading">¶</a></h1>
+<section id="lexer-tokenize">
+<h2>lexer_tokenize<a class="headerlink" href="#lexer-tokenize" title="Link to this heading">¶</a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">CalcStatus</span><span class="w"> </span><span class="n">lexer_tokenize</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">expr</span><span class="p">,</span><span class="w"> </span><span class="n">Token</span><span class="w"> </span><span class="o">*</span><span class="n">tokens</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">max</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">count</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Tokenizes an input expression into individual tokens.</p>
+<p>The `lexer_tokenize` function takes a NUL-terminated string representing an arithmetic expression and tokenizes it into an array of `Token` structures. Each token represents either a number, an operator, a parenthesis, or the end of the expression. The function ensures that the output array does not exceed the specified maximum capacity (`max`). Upon completion, it updates the `count` parameter with the total number of tokens generated, including the special `TOK_END` token. The function returns a status indicating success or an error condition such as overflow or syntax errors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">param expr<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A NUL-terminated string containing the arithmetic expression to be tokenized.</p>
+</dd>
+<dt class="field-even">param tokens<span class="colon">:</span></dt>
+<dd class="field-even"><p>An array of `Token` structures where the resulting tokens will be stored. This array must have at least `max` elements allocated.</p>
+</dd>
+<dt class="field-odd">param max<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The maximum number of tokens that can be stored in the `tokens` array. The function will not generate more than this many tokens.</p>
+</dd>
+<dt class="field-even">param count<span class="colon">:</span></dt>
+<dd class="field-even"><p>A pointer to an integer where the function will store the total number of tokens generated, including the `TOK_END` token.</p>
+</dd>
+<dt class="field-odd">returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A `CalcStatus` enum indicating the result of the operation. Possible values include `CALC_OK` for success, `CALC_ERR_OVERFLOW` if the number of tokens exceeds the maximum capacity, and `CALC_ERR_SYNTAX` if there is a syntax error in the input expression.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">AutoDocs</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="calc_c.html">calc.c</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calc_h.html">calc.h</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">lexer.c</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#lexer-tokenize">lexer_tokenize</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lexer_h.html">lexer.h</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main_c.html">main.c</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ops_c.html">ops.c</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ops_h.html">ops.h</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parser_c.html">parser.c</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parser_h.html">parser.h</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stack_c.html">stack.c</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stack_h.html">stack.h</a></li>
+<li class="toctree-l1"><a class="reference internal" href="util_c.html">util.c</a></li>
+<li class="toctree-l1"><a class="reference internal" href="util_h.html">util.h</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="calc_h.html" title="previous chapter">calc.h</a></li>
+      <li>Next: <a href="lexer_h.html" title="next chapter">lexer.h</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.0.4</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/api/lexer_c.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
