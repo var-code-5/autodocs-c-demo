@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>parser.c &#8212; AutoDocs  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="parser.h" href="parser_h.html" />
+    <link rel="prev" title="ops.h" href="ops_h.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="parser-c">
+<h1>parser.c<a class="headerlink" href="#parser-c" title="Link to this heading">¶</a></h1>
+<section id="parser-parse-expression">
+<h2>parser_parse_expression<a class="headerlink" href="#parser-parse-expression" title="Link to this heading">¶</a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">CalcStatus</span><span class="w"> </span><span class="n">parser_parse_expression</span><span class="p">(</span><span class="n">Parser</span><span class="w"> </span><span class="o">*</span><span class="n">ps</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Parse and evaluate a full arithmetic expression.</p>
+<p>This function parses and evaluates a mathematical expression according to the rules of arithmetic. It handles addition (+), subtraction (-), multiplication (*), division (/), modulus (%), and exponentiation (^). The function uses mutual recursion with `parser_parse_term` and `parser_parse_factor` to respect operator precedence and handle nested expressions within parentheses. If the expression is valid, it calculates the result and stores it in the output parameter `out`. If there is a syntax error or any other issue during parsing, it returns an appropriate error status.</p>
+</section>
+<section id="parser-parse-factor">
+<h2>parser_parse_factor<a class="headerlink" href="#parser-parse-factor" title="Link to this heading">¶</a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">CalcStatus</span><span class="w"> </span><span class="n">parser_parse_factor</span><span class="p">(</span><span class="n">Parser</span><span class="w"> </span><span class="o">*</span><span class="n">ps</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Parse a single factor in an arithmetic expression.</p>
+<p>This function parses a single factor in an arithmetic expression. A factor can be a number, a unary minus, or a parenthesized sub-expression. If the factor is successfully parsed, it stores the result in the output parameter `out`. If there is a syntax error, such as an unexpected token or mismatched parentheses, it returns an error status.</p>
+</section>
+<section id="parser-parse-term">
+<h2>parser_parse_term<a class="headerlink" href="#parser-parse-term" title="Link to this heading">¶</a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">CalcStatus</span><span class="w"> </span><span class="n">parser_parse_term</span><span class="p">(</span><span class="n">Parser</span><span class="w"> </span><span class="o">*</span><span class="n">ps</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Parse a term in an arithmetic expression.</p>
+<p>This function parses a term in an arithmetic expression. A term consists of factors combined using multiplication (*), division (/), modulus (%), and exponentiation (^). The function respects operator precedence and handles nested expressions. If the term is successfully parsed, it calculates the result and stores it in the output parameter `out`. If there is a syntax error or any other issue during parsing, it returns an appropriate error status.</p>
+</section>
+<section id="peek">
+<h2>peek<a class="headerlink" href="#peek" title="Link to this heading">¶</a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Token</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">peek</span><span class="p">(</span><span class="n">Parser</span><span class="w"> </span><span class="o">*</span><span class="n">ps</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Returns the next token in the parser’s input without advancing the position.</p>
+<p>The `peek` function retrieves the current token pointed to by the parser’s position indicator without incrementing it. This allows for lookahead operations in parsing algorithms, enabling decisions based on upcoming tokens without consuming them from the stream.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">AutoDocs</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="calc_c.html">calc.c</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calc_h.html">calc.h</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lexer_c.html">lexer.c</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lexer_h.html">lexer.h</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main_c.html">main.c</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ops_c.html">ops.c</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ops_h.html">ops.h</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">parser.c</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#parser-parse-expression">parser_parse_expression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#parser-parse-factor">parser_parse_factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#parser-parse-term">parser_parse_term</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#peek">peek</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="parser_h.html">parser.h</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stack_c.html">stack.c</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stack_h.html">stack.h</a></li>
+<li class="toctree-l1"><a class="reference internal" href="util_c.html">util.c</a></li>
+<li class="toctree-l1"><a class="reference internal" href="util_h.html">util.h</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="ops_h.html" title="previous chapter">ops.h</a></li>
+      <li>Next: <a href="parser_h.html" title="next chapter">parser.h</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.0.4</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/api/parser_c.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
