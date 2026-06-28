@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>calc.c &#8212; AutoDocs  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="calc.h" href="calc_h.html" />
+    <link rel="prev" title="AutoDocs - /app/autodocs_stores/var-code-5_autodocs-c-demo/repo @ 93e7b5f" href="../index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="calc-c">
+<h1>calc.c<a class="headerlink" href="#calc-c" title="Link to this heading">¶</a></h1>
+<section id="calc-eval">
+<h2>calc_eval<a class="headerlink" href="#calc-eval" title="Link to this heading">¶</a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">CalcStatus</span><span class="w"> </span><span class="n">calc_eval</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">expr</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Evaluate an infix arithmetic expression.</p>
+<p>The `calc_eval` function takes a NUL-terminated expression string (`expr`) and computes its value, storing the result in the location pointed to by `out`. The function first tokenizes the input expression using the `lexer_tokenize` function. It then checks for balanced parentheses using the `check_balanced` function. If both steps succeed, the function proceeds to parse and evaluate the expression using the `parser_parse_expression` function. If the entire input is successfully consumed and parsed without errors, the function returns `CALC_OK`. Otherwise, it returns an appropriate error status such as `CALC_ERR_SYNTAX` for syntax errors or `CALC_ERR_DIV_ZERO` for division by zero.</p>
+</section>
+<section id="check-balanced">
+<h2>check_balanced<a class="headerlink" href="#check-balanced" title="Link to this heading">¶</a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="n">CalcStatus</span><span class="w"> </span><span class="n">check_balanced</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Token</span><span class="w"> </span><span class="o">*</span><span class="n">tokens</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Check if parentheses in the given token array are balanced.</p>
+<p>This function iterates through an array of tokens, checking for balanced use of parentheses. It uses a stack to keep track of opening parentheses. For each token, if it is an opening parenthesis, it is pushed onto the stack. If it is a closing parenthesis, the function attempts to pop from the stack. If the stack is empty when a closing parenthesis is encountered, or if the stack overflows during the process, the function returns an error status. After processing all tokens, if the stack is empty, it indicates that all parentheses were matched correctly, and the function returns `CALC_OK`. Otherwise, it returns `CALC_ERR_SYNTAX`, indicating unbalanced parentheses.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">AutoDocs</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">calc.c</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#calc-eval">calc_eval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#check-balanced">check_balanced</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="calc_h.html">calc.h</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lexer_c.html">lexer.c</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lexer_h.html">lexer.h</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main_c.html">main.c</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ops_c.html">ops.c</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ops_h.html">ops.h</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parser_c.html">parser.c</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parser_h.html">parser.h</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stack_c.html">stack.c</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stack_h.html">stack.h</a></li>
+<li class="toctree-l1"><a class="reference internal" href="util_c.html">util.c</a></li>
+<li class="toctree-l1"><a class="reference internal" href="util_h.html">util.h</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../index.html" title="previous chapter">AutoDocs - /app/autodocs_stores/var-code-5_autodocs-c-demo/repo &#64; 93e7b5f</a></li>
+      <li>Next: <a href="calc_h.html" title="next chapter">calc.h</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.0.4</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/api/calc_c.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
