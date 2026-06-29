@@ -1,0 +1,80 @@
+/* Brand colors */
+:root {
+  --color-brand-primary: #000000;
+  --color-brand-content: #012dc7;
+}
+
+/* Light mode sidebar */
+body {
+  --color-sidebar-background: #f8f9fa;
+  --color-sidebar-link-text: #1a1a2e;
+  --color-sidebar-link-text--top-level: #012dc7;
+}
+
+/* Dark mode sidebar */
+@media not print {
+  body[data-theme="dark"] {
+    --color-sidebar-background: #1a1a2e;
+    --color-sidebar-link-text: #ffffff;
+    --color-sidebar-link-text--top-level: #ffffff;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body:not([data-theme="light"]) {
+      --color-sidebar-background: #1a1a2e;
+      --color-sidebar-link-text: #ffffff;
+      --color-sidebar-link-text--top-level: #ffffff;
+    }
+  }
+}
+
+.sidebar-company-links {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-top: 1px solid rgba(128, 128, 128, 0.2);
+  font-size: 0.875rem;
+}
+
+.sidebar-company-links a {
+  color: var(--color-sidebar-link-text);
+  text-decoration: none;
+}
+
+.sidebar-company-links a:hover {
+  text-decoration: underline;
+}
+
+/* Marvell logo — left-aligned, black in light mode, white in dark mode */
+.sidebar-brand {
+  text-align: left;
+  align-items: flex-start;
+}
+
+.sidebar-logo-container {
+  width: 100%;
+  text-align: left;
+}
+
+.sidebar-logo {
+  max-height: 2.5rem;
+  width: auto;
+  margin: 0 !important;
+  display: block;
+  filter: none;
+}
+
+@media not print {
+  body[data-theme="dark"] .sidebar-logo {
+    filter: brightness(0) invert(1);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body:not([data-theme="light"]) .sidebar-logo {
+      filter: brightness(0) invert(1);
+    }
+  }
+
+  body[data-theme="light"] .sidebar-logo {
+    filter: none;
+  }
+}
