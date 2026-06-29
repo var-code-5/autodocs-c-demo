@@ -8,6 +8,8 @@
 #include "stack.h"
 
 int mul(int a, int b){ return a*b;}
+
+int add(int a,int b){return a+b;}
 /**
  * @brief Verify parentheses are balanced using a value stack.
  * @param tokens token array.
